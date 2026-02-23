@@ -40,8 +40,8 @@ services:
       mailhog:
         condition: service_started
     environment:
-      HOST: 0.0.0.0
-      PORT: 1337
+      HOST: ${PUBLIC_URL:-http://localhost}
+      PORT: 443
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
       DATABASE_PORT: 5432
