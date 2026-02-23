@@ -47,7 +47,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const userRole = computed(() => user.value?.role?.name || null)
   const isAuthenticated = computed(() => !!user.value && !!token.value)
-  const isIssuer = computed(() => (userRole.value && userRole.value.toLowerCase() === 'issuer'))
+  const isIssuer = computed(() => (userRole.value))
 
   // Initialize auth state from localStorage/cookies
   async function init() {
