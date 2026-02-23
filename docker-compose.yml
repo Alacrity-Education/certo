@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   postgres:
@@ -24,8 +24,8 @@ services:
     container_name: certo_mailhog
     restart: unless-stopped
     ports:
-      - "1025:1025"  # SMTP server
-      - "8025:8025"  # Web UI
+      - "1025:1025" # SMTP server
+      - "8025:8025" # Web UI
     networks:
       - certo-network
 
@@ -34,6 +34,7 @@ services:
       context: ./src/backend
     container_name: certo_backend
     restart: unless-stopped
+    command: sh -c "npm run build && npm run start"
     depends_on:
       postgres:
         condition: service_healthy
@@ -79,4 +80,4 @@ networks:
     driver: bridge
 
 volumes:
-  postgres-data: 
+  postgres-data:
